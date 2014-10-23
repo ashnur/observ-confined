@@ -1,6 +1,6 @@
 {
   "name": "observ-confined",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "An observable where the value is checked against a function and changed only if it's passed",
   "main": "index.js",
   "scripts": {
