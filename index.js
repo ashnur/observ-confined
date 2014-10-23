@@ -2,11 +2,12 @@ module.exports = Confined
 
 var value = require('observ')
 
-function Confined(confine, min, max, init){
+function Confined(confine, opts){
+  opts = opts || {}
 
   function onchange(n){
     // check new value
-    var nv = confine(n, prev, min, max)
+    var nv = confine(n, prev, opts)
     if ( n !== nv ) {
       // this avoids never ending recursion
       v.set(nv)
@@ -16,7 +17,7 @@ function Confined(confine, min, max, init){
     prev = nv
   }
   
-  var v = value(init)
+  var v = value(opts.initialValue)
   // set prev value to inited value 
   // I don't user `init` because that might be 
   // different from actual value: check `normalize` function

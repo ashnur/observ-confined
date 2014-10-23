@@ -1,32 +1,30 @@
 var bounded = require('../index.js')
 
-function norm(v, prev, min, max){
-  v = confine(Math.round(v), min, max)
+function confine(v, prev, opts){
+  v = Math.round(v)
+  v = v > opts.maximumValue ? opts.maximumValue : v < opts.minimumValue ? opts.minimumValue : v
   if ( isNaN(v) ) v = prev
   return v
 }
 
-function confine(v, min, max){
-  return v > max ? max : v < min ? min : v
-}
-
-
 var test = require('tape')
 
+var opts = {minimumValue: -5, maximumValue: 25, initialValue: 10}
+
 test('init value', function(t){
-  var value = bounded(norm, -5, 25, 10)
+  var value = bounded(confine, opts)
   t.ok(value(), 10)
-  var value = bounded(norm, -5, 25, -15)
+  var value = bounded(confine, opts)
   t.ok(value(), -5)
-  var value = bounded(norm, -5, 25, 35)
+  var value = bounded(confine, opts)
   t.ok(value(), 25)
-  var value = bounded(norm, -5, 25, 'wattafak')
+  var value = bounded(confine, opts)
   t.ok(value(), -5)
   t.end()
 })
 
 test('set value', function(t){
-  var value = bounded(norm, -5, 25, 10)
+  var value = bounded(confine, opts)
   value.set(15)
   t.ok(value(), 15)
   value.set(55)
