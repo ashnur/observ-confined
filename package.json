@@ -1,0 +1,34 @@
+{
+  "name": "observ-confined",
+  "version": "0.0.1",
+  "description": "An observable where the value is checked against a function and changed only if it's passed",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ashnur/observ-confined.git"
+  },
+  "keywords": [
+    "observ",
+    "observable",
+    "bounded",
+    "confined",
+    "limited",
+    "restricted",
+    "mercury"
+  ],
+  "author": "ashnur",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ashnur/observ-confined/issues"
+  },
+  "homepage": "https://github.com/ashnur/observ-confined",
+  "devDependencies": {
+    "tape": "^3.0.1"
+  },
+  "dependencies": {
+    "observ": "^0.2.0"
+  }
+}
